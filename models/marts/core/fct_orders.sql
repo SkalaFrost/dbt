@@ -1,3 +1,12 @@
+{{
+    config(
+        materialized='incremental',
+        incremental_strategy='merge',
+        on_schema_change='fail'
+    )
+}}
+
+
 with orders as  (
     select * from {{ ref('stg_orders' )}}
 ),
